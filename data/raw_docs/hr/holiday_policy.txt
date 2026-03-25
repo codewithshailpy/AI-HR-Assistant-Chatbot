@@ -1,0 +1,13 @@
+Holiday Policy
+
+The company observes the following public holidays:
+- Republic Day
+- Independence Day
+- Diwali
+- Christmas
+
+Optional Holidays:
+Employees can choose 2 optional holidays per year.
+
+Holiday Work:
+Employees working on holidays will receive compensatory off.

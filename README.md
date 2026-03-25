@@ -136,6 +136,11 @@ AI-HR-Assistant-Chatbot
 │   ├── chunking.py
 │   └── embed_documents.py
 │
+├── data/
+│   ├── raw_docs/hr/        
+│   └── processed/
+|
+|
 ├── widget
 │   ├── widget.js
 │   ├── widget.css
@@ -298,6 +303,9 @@ Example request:
 * Improved employee experience
 
 ---
+# Note
+This project uses sample HR policy documents for demonstration purposes only.
+
 
 # License
 
