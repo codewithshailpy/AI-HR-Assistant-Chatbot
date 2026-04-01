@@ -121,10 +121,7 @@ AI-HR-Assistant-Chatbot
 │   │   │   ├── rag_service.py
 │   │   │   ├── embedding_service.py
 │   │   │   └── llm_service.py
-│   │   │
-│   │   ├── database
-│   │   │   ├── chroma_db.py
-│   │   │   └── ticket_db.py
+│   │   │         
 │   │   │
 │   │   ├── models
 │   │   │   └── schemas.py
@@ -136,6 +133,11 @@ AI-HR-Assistant-Chatbot
 │   ├── chunking.py
 │   └── embed_documents.py
 │
+|
+|
+|── chroma_db.py
+|
+|
 ├── data/
 │   ├── raw_docs/hr/        
 │   └── processed/

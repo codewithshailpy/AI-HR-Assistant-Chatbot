@@ -1,14 +1,7 @@
 import chromadb
-from langchain_openai import OpenAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from document_loader import load_documents
 from chunking import chunk_documents
-import os
-
-from dotenv import load_dotenv
-
-load_dotenv()
-
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Step 1: Load documents
 documents = load_documents(
@@ -18,9 +11,9 @@ documents = load_documents(
 # Step 2: Chunk documents
 chunks = chunk_documents(documents)
 
-# Step 3: Setup embeddings
-embedding_model = OpenAIEmbeddings(
-    openai_api_key=OPENAI_API_KEY
+# Step 3: Setup embeddings (FREE)
+embedding_model = HuggingFaceEmbeddings(
+    model_name="all-MiniLM-L6-v2"
 )
 
 # Step 4: Setup ChromaDB
