@@ -1,151 +1,158 @@
 # AI HR Assistant Chatbot
 
-An AI-powered HR assistant chatbot designed to help employees and visitors quickly get answers to HR-related queries using company knowledge base documents.
+An AI-powered HR assistant chatbot designed to help employees and visitors quickly access HR-related information using an intelligent, document-driven system.
 
-The chatbot uses **Retrieval Augmented Generation (RAG)** with a vector database to provide accurate responses based on internal HR documents.
+The solution leverages **Retrieval-Augmented Generation (RAG)** with a vector database to provide accurate, context-aware answers from internal HR documents.
 
-The system is designed to be **scalable, reliable, and easily integrated** with company websites, employee portals, or other applications.
-
----
-
-# Project Goals
-
-* Reduce HR workload by automating repetitive employee queries
-* Provide instant access to HR policies and company information
-* Enable employees to create HR support tickets when needed
-* Build a scalable AI system that can integrate with multiple platforms
+It is built to be **scalable, modular, and embeddable** across websites, employee portals, and internal tools.
 
 ---
 
-# Key Features
+# 🚀 Project Objectives
 
-## AI HR Assistant
+* Automate repetitive HR queries
+* Provide instant, 24/7 employee support
+* Centralize HR knowledge access
+* Reduce operational load on HR teams
+* Enable seamless escalation via ticketing system
+
+---
+
+# ✨ Key Features
+
+## 🧠 AI HR Assistant
 
 Employees can ask questions such as:
 
 * What is the leave policy?
 * What is the notice period?
-* How do I apply for maternity leave?
+* How can I apply for maternity leave?
 
-The chatbot retrieves answers from company HR documents.
-
----
-
-## Embeddable Chat Widget
-
-The chatbot can be embedded into:
-
-* Company website
-* Employee portal
-* Internal applications
-
+The chatbot retrieves relevant information from internal documents and generates contextual responses.
 
 ---
 
-## HR Ticket Creation
+## 💬 Embeddable Chat Widget
 
-If the chatbot cannot answer a query, users can create an HR support ticket.
+A lightweight, plug-and-play JavaScript widget that can be embedded into:
 
-Ticket information stored:
+* Company websites
+* Employee portals
+* Internal dashboards
 
-* Employee / visitor name
+### Integration Example
+
+```html
+<script src="http://<your-server>/chat.js"></script>
+```
+
+✔ No frontend dependency
+✔ Works across platforms
+✔ Easy to customize
+
+---
+
+## 🎫 HR Ticket Creation
+
+If a query cannot be resolved:
+
+* Users can raise support tickets
+* HR team gets notified
+* Ticket lifecycle can be tracked
+
+### Ticket Data Includes
+
+* Name
 * Email
-* Query description
-* Ticket status
-* Creation timestamp
+* Query
+* Status
+* Timestamp
 
 ---
 
-## Knowledge Base from Documents
+## 📚 Knowledge Base from Documents
 
-The chatbot learns from:
+Supports ingestion of:
 
 * HR policy documents
 * Employee handbook
 * Leave policies
-* IT support guides
-* FAQ documents
+* IT guidelines
+* FAQs
 
-These documents are converted into embeddings and stored in a vector database.
-
----
-
-# Technology Stack
-
-| Layer               | Technology                    |
-| ------------------- | ----------------------------- |
-| Frontend Widget     | JavaScript Chat Widget        |
-| Backend API         | Python (FastAPI)              |
-| Vector Database     | ChromaDB                      |
-| LLM                 | OpenAI API                    |
-| Document Processing | LangChain/Python              |
-| Deployment          | AWS                           |
+Documents are processed, chunked, embedded, and stored in a vector database for semantic search.
 
 ---
 
-# System Architecture
+# 🧱 Technology Stack
+
+| Layer               | Technology                       |
+| ------------------- | -------------------------------- |
+| Frontend Widget     | JavaScript (Embeddable Widget)   |
+| Backend API         | Python (FastAPI)                 |
+| Vector Database     | ChromaDB                         |
+| Embeddings          | HuggingFace / OpenAI             |
+| LLM                 | HuggingFace (Local) / OpenAI API |
+| Document Processing | Python / LangChain               |
+| Deployment          | AWS (planned)                    |
+
+---
+
+# 🏗️ System Architecture
 
 ```
-Employees / Visitors
-        |
-        v
+User (Employee / Visitor)
+        ↓
 Chat Widget (Website / Portal)
-        |
-        v
+        ↓
 Backend API (FastAPI)
-        |
-        v
+        ↓
 Vector Database (ChromaDB)
-        |
-        v
-OpenAI API
-        |
-        v
-Generated Response
+        ↓
+RAG Pipeline
+        ↓
+LLM (HuggingFace / OpenAI)
+        ↓
+Response
 ```
 
 ---
 
-# Repository Structure
+# 📂 Repository Structure
 
 ```
 AI-HR-Assistant-Chatbot
 │
-├── backend
-│   ├── app
-│   │   ├── api
+├── backend/
+│   ├── app/
+│   │   ├── api/
 │   │   │   ├── chat.py
 │   │   │   └── ticket.py
 │   │   │
-│   │   ├── services
+│   │   ├── services/
 │   │   │   ├── rag_service.py
 │   │   │   ├── embedding_service.py
 │   │   │   └── llm_service.py
-│   │   │         
 │   │   │
-│   │   ├── models
+│   │   ├── models/
 │   │   │   └── schemas.py
 │   │   │
 │   │   └── main.py
 │
-├── ingestion
+├── ingestion/
 │   ├── document_loader.py
 │   ├── chunking.py
 │   └── embed_documents.py
 │
-|
-|
-|── chroma_db.py
-|
-|
 ├── data/
-│   ├── raw_docs/hr/        
+│   ├── raw_docs/hr/
 │   └── processed/
-|
-|
-├── widget
-│   ├── widget.js
-│   ├── widget.css
+│
+├── chroma_db/              # Vector database (generated)
+│
+├── widget/                 # Embeddable chatbot widget
+│   ├── chat.js
+│   ├── style.css
 │   └── index.html
 │
 └── README.md
@@ -153,7 +160,7 @@ AI-HR-Assistant-Chatbot
 
 ---
 
-# Setup Instructions
+# ⚙️ Setup Instructions
 
 ## 1. Clone Repository
 
@@ -164,24 +171,24 @@ cd AI-HR-Assistant-Chatbot
 
 ---
 
-## 2. Create Python Environment
+## 2. Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate environment:
+### Activate
 
-Linux / Mac
-
-```bash
-source venv/bin/activate
-```
-
-Windows
+**Windows**
 
 ```bash
 venv\Scripts\activate
+```
+
+**Linux / Mac**
+
+```bash
+source venv/bin/activate
 ```
 
 ---
@@ -189,61 +196,53 @@ venv\Scripts\activate
 ## 3. Install Dependencies
 
 ```bash
-pip install -r backend/requirements.txt
+pip install -r requirements.txt
 ```
 
 ---
 
 ## 4. Configure Environment Variables
 
-Create a `.env` file:
+Create `.env` file:
 
 ```
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_api_key   # Optional (if using OpenAI)
 CHROMA_DB_DIR=./chroma_db
 MODEL_NAME=gpt-4o-mini
 ```
 
 ---
 
-# Document Ingestion
+# 📥 Document Ingestion
 
 Place HR documents inside:
 
 ```
-data/hr_docs/
+data/raw_docs/hr/
 ```
 
-Example documents:
-
-* leave_policy.pdf
-* employee_handbook.pdf
-* benefits_policy.pdf
-
-Run ingestion pipeline:
+Run ingestion:
 
 ```bash
 python ingestion/embed_documents.py
 ```
 
-This will:
+### This process:
 
-1. Load documents
-2. Chunk text
-3. Generate embeddings
-4. Store vectors in ChromaDB
+* Loads documents
+* Splits into chunks
+* Generates embeddings
+* Stores vectors in ChromaDB
 
 ---
 
-# Running the Backend
-
-Start the FastAPI server:
+# ▶️ Running the Backend
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-API will run at:
+API available at:
 
 ```
 http://localhost:8000
@@ -251,64 +250,117 @@ http://localhost:8000
 
 ---
 
-# Chat API Example
+# 🔗 API Endpoints
 
-Endpoint:
+## Chat Endpoint
 
 ```
 POST /chat
 ```
 
-Request:
+### Request
 
 ```json
 {
- "question": "What is the notice period?"
+  "question": "What is the leave policy?"
 }
 ```
 
-Response:
+### Response
 
 ```json
 {
- "answer": "The notice period is 60 days according to HR policy."
+  "answer": "Employees are entitled to 20 paid leaves annually..."
 }
 ```
 
 ---
 
-# HR Ticket API
-
-Endpoint:
+## Ticket Endpoint
 
 ```
 POST /ticket
 ```
 
-Example request:
+---
 
-```json
-{
- "name": "John Doe",
- "email": "john@company.com",
- "query": "My leave balance is incorrect"
-}
+# 🌐 Widget Integration
+
+## Local Testing
+
+```bash
+cd widget
+python -m http.server 5500
 ```
+
+Open:
+
+```
+http://localhost:5500
+```
+
 ---
 
+## Embed in Any Website
 
-# Expected Business Impact
+```html
+<script src="http://localhost:5500/chat.js"></script>
+```
 
-* Reduce HR workload
-* Faster employee support
-* Centralized knowledge access
+---
+
+## ⚠️ Enable CORS in Backend
+
+```python
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+---
+
+# ⚡ Current Capabilities
+
+✔ RAG-based chatbot
+✔ Vector search using ChromaDB
+✔ Embeddable chat widget
+✔ Local (free) and OpenAI-based modes
+✔ REST API architecture
+
+---
+
+# 🚧 Upcoming Enhancements
+
+* Authentication (employee login)
+* Chat history persistence
+* Streaming responses (real-time typing)
+* Ticket System
+* Admin dashboard for HR
+* Analytics & usage tracking
+
+---
+
+# 📈 Business Impact
+
+* Reduced HR workload
+* Faster employee query resolution
 * Improved employee experience
+* Centralized knowledge access
 
 ---
-# Note
-This project uses sample HR policy documents for demonstration purposes only.
 
+# ⚠️ Note
 
-# License
+This project uses sample HR documents for demonstration purposes only.
 
-Internal project for personal use.
+---
+
+# 📄 License
+
+Internal project for learning and experimentation use.

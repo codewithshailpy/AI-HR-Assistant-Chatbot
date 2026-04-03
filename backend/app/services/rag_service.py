@@ -1,9 +1,15 @@
 import chromadb
 from langchain_huggingface import HuggingFaceEmbeddings
 from transformers import pipeline
+import os
 
 # Initialize ChromaDB
-chroma_client = chromadb.PersistentClient(path="./chroma_db")
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../"))
+
+
+chroma_path = os.path.join(BASE_DIR, "chroma_db")
+print(chroma_path)
+chroma_client = chromadb.PersistentClient(path=chroma_path)
 collection = chroma_client.get_collection("hr_knowledge")
 
 # Embedding model (FREE)
