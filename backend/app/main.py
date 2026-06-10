@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from app.api import chat
 from fastapi.middleware.cors import CORSMiddleware
+from app.api import ticket
 
 app = FastAPI()
-
+app.include_router(ticket.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],   # allow all (for development)
